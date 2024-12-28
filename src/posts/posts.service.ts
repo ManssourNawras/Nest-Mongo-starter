@@ -5,6 +5,7 @@ import { Injectable } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { PostRepository } from './posts.repository';
+import { UserDto } from 'src/common/interfaces/user.interface';
 
 @Injectable()
 export class PostsService {
@@ -14,11 +15,11 @@ export class PostsService {
 
   create(
     createPostsDto: CreatePostDto,
-    // { email, _id: userId }: UserDto,
+    { email, _id: userId }: UserDto,
   ) {
     return this.PostRepository.create({
       ...createPostsDto,
-      userId : "123",
+      userId : userId,
       createdAt : new Date(),
       updatedAt : new Date(),
     });

@@ -1,7 +1,6 @@
 // lib
 import { Module } from '@nestjs/common';
-// import { ConfigModule as NestConfigModule } from '@nestjs/config';
-// import * as Joi from 'joi';
+import { LoggerModule as PinoLoggerModule } from 'nestjs-pino';
 
 // custom
 import { AppController } from './app.controller';
@@ -10,11 +9,23 @@ import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from './config/config.module';
 import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
+    PinoLoggerModule.forRoot({
+      pinoHttp: {
+        transport: {
+          target: 'pino-pretty',
+          options: {
+            singleLine: true,
+          },
+        },
+      },
+    }),
     ConfigModule,
     DatabaseModule,
+    AuthModule,
     UsersModule,
     PostsModule,
   ],

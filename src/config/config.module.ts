@@ -14,6 +14,8 @@ import { databaseConfig } from './database.config';
             validationSchema: Joi.object({
                 DATABASE_URI_LOCAL : Joi.string().required(),
                 DATABASE_DB_LOCAL  : Joi.string().required(),
+                JWT_SECRET: Joi.string().required(),
+                JWT_EXPIRATION: Joi.string().required(),
             }),
         }),
     ],
