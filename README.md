@@ -3,7 +3,7 @@
 A simple Nest Starter App with Auth(Passport/JWT) and MongoDB
 
 ## using ...
-- ### Nest
+- ### NestJs
 - ### Typescript
 - ### Passport/Jwt
 - ### MongoDB
